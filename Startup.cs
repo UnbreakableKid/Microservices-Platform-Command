@@ -31,6 +31,10 @@ namespace PlatformService
             //Register DbContext with InMemory database for testing purposes only for dependency injection 
             services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
 
+            services.AddScoped<IPlatformRepo, PlatformRepo>();
+
+
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -60,6 +64,8 @@ namespace PlatformService
             {
                 endpoints.MapControllers();
             });
+
+            PrepDb.PrepPopulation(app);
         }
     }
 }
