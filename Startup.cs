@@ -33,11 +33,11 @@ namespace PlatformService
 
             services.AddScoped<IPlatformRepo, PlatformRepo>();
 
-
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
-            {
+            { 
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlatformService", Version = "v1" });
             });
         }
